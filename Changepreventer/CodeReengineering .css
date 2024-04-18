@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    text-align: justify;
+}
+body{
+    min-height : 100vh;
+    display :contents;
+    background-image:linear-gradient(to right, aqua, violet);
+}
+
+.h1{
+    font-family:'Times New Roman', Times, serif;
+    font-size:medium;
+}
+ol{
+    position:center;
+    list-style-type:circle;
+    color:aqua;
+}

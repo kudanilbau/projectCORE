@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+  
+        <meta charset="UTF-8" lang="eng">
+    </head>
+
+    <body>
+        <h1><b><color>Lazy Class</b></h1>
+        <div class="lazyclass" id="LazyClass">
+            <p>
+                Lazy class adalah salah satu <b>"Code Smell</b>
+                yang mengindikasikan bahwa sebuah class tidak memiliki cukup tanggung jawab
+                atau fungsionalitas yang cukupuntuk dapat membenarkan keberadaannya. 
+                Lazy class mungkin terjadi ketika sebuah class awalnya memiliki fungsionalitas yang signifikan,
+                tetapi seiring waktu, sebagian besar fungsionalitasnya dihapus atau tidak lagi diperlukan, namun class tersebut tetap ada tanpa melakukan 
+                banyak hal.
+            </p>
+
+            <P>Tanda-tanda dari Lazy Class antara lain : </P>
+            <h4><b>1. Kelas memiliki sedikit atau bahkan tidak ada metode :</b></h4>
+            <p>
+                Jika sebuah class hanya memiliki beberapa metode dan tidak melakukan banyak hal,
+                mungkin ituadalah tanda dari lazy class.
+            </p>
+
+            <h4><b>2. Kelas tidak digunakan secara aktif :</b></h4>
+            <p>
+                Jika class jarang digunakan atau tidak lagi digunakan
+                sama sekali dalam kode, itu bisa menjadi indikasi bahwa
+                class tersebut mungkin sudah tidak perlu lagi. 
+            </p>
+
+            <h4><b>3. Kelas hanya digunakan untuk menyimpan data tanpa logika tambahan :</b></h4>
+            <p>
+                Jika class hanya digunakan untuk menyimpan data tanpa melakukan operasi 
+                atau logikatambahan pada data tersebut, itu bisa menjadi tanda lazy class.
+            </p>
+
+            <p>
+                Lazy class dapat mengurangi kejelasan dan kebersihan kode, karena mereka dapat menyebabkan kode menjadi lebih rumit
+                dan sulit dipahami. Oleh karena itu, solusinya adalah menghapus atau menggabungkan dengan class lain 
+                untuk memperjelas struktur dan fungsionalitas kode.
+            </p>
+        </div>
+        <div class="contohcodenya" id="ContohLazyClass">
+            <h1><b>Berikut adalah contoh code dari Lazy Class</b></h1>
+            <img src="LazyClass.png">
+            <p>
+                Dalam contoh ini, <b>'LazyClass'</b> adalah contoh dari lazy class karena 
+                class tersebut tidak memiliki metode atau atribut apapun. Class ini tidak 
+                melakukan apapun selain menjadi wadah kosong yang tidak memberikan
+                nilai tambah dalam kode.
+            </p>
+        </div>
+
+    </body>
+</html>

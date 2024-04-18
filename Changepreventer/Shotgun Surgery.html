@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="shotgun.css">
+    <title>Change Preventers</title>
+</head>
+<body>
+    <header class="head">
+        <a></a>
+        <nav class="navbar">
+            <a href="ChangePreventers.html">Change Preventers</a>
+            <a href="#">Dispensables</a>
+        </nav>
+    </header>
+    <br>
+    <div class="all">
+
+    <div class="container">
+        <h1>Shotgun Surgery</h1>
+        <br>
+        <h3>Penjelasan</h3>
+        <p>
+            Shotgun surgery terjadi ketika perubahan pada satu fitur atau fungsional dalam suatu sistem memerlukan perubahan yang tersebar di banyak bagian code yang berbeda.  Artinya, jika ingin melakukan perubahan, maka harus "menembak" code di banyak tempat yang berbeda seperti tembakan dari senapan shotgun. Shotgun surgery terdengar mirip dengan divergent change namun mereka adalah dua hal yang berbeda.  Divergent Change terjadi ketika satu area dalam code mempengaruhi area lain yang tidak terkait, sementara Shotgun Surgery terjadi ketika perubahan tertentu mempengaruhi banyak bagian code yang terpisah.
+        </p>
+        <br>
+        <h3>Faktor</h3>
+        <p>
+           <mark>Ketergantungan yang tinggi, Kurangnya desain modular, dan Pelanggaran Prinsip Single Responsibility</mark> merupakan beberapa faktor yang menyebabkan terjadinya shotgun surgery. Pelanggaran prinsip single responsibility terjadi ketika sebuah class bertanggung jawab atas banyak tugas yang seharusnya tugas-tugas itu terpisah, bila terjadi perubahan pada salah satu tanggung jawab, maka dapat memengaruhi area lain dari code.
+        </p>
+        <img class="resp" src="img/21zmch9lev4txn608nhm.jpg" alt="prinsip single responsibility">
+        <p>
+           Design modular terjadi karena kurangnya pemisahan tugas ke dalam metode atau class yang terpisah dapat mengakibatkan ketergantungan yang tinggi antara berbagai bagian code. Sedangkan pada faktor ketergantungan yang tinggi, ketika bagian-bagian kode yang berbeda saling tergantung satu sama lain, perubahan pada satu bagian dapat mempengaruhi banyak bagian lainnya.
+        </p>
+        <br>
+        <img class="kasus" src="img/refactor.png" alt="Case">
+        <p>
+            Pada contoh code berikut ada class <code class="class">'Employee'</code> yang memiliki atribut <code class="class">'name'</code>, <code class="class">'department'</code>, dan <code class="class">'salary'</code>. Class ini juga memiliki metode yang mengatur atribut di class <code class="class">'Employee'</code>, <code class="class">'printDetails()'</code>, dan juga  <code class="class">'calculateBonus()'</code>.
+        </p>
+<div class="contain">
+    <div class="code-wrap">
+    <pre>
+        <code id="code" class="language-java">
+            public class Employee {
+                private String name;
+                private String department;
+                private int salary;
+            
+                public Employee(String name, String department, int salary) {
+                    this.name = name;
+                    this.department = department;
+                    this.salary = salary;
+                }            
+                public void setDepartment(String department) {
+                    this.department = department;
+                }            
+                public void setSalary(int salary) {
+                    this.salary = salary;
+                }            
+                public void printDetails() {
+                    System.out.println("Name: " + name);
+                    System.out.println("Department: " + department);
+                    System.out.println("Salary: " + salary);
+                }
+                public void setBonus(int bonus) {
+                    this.bonus = bonus;
+                }            
+                public int getBonus() {
+                    return bonus;
+                }          
+                public void calculateBonus() {
+                    Bonus bonus = new Bonus();
+                    bonus.calculate(this);
+                }
+            }
+            
+            public class Bonus {
+                public void calculate(Employee employee) {
+                    if (employee.getSalary() > 50000) {
+                        employee.setSalary(employee.getSalary() + 1000);
+                    }
+                }
+            }
+        </code>
+    </pre>
+    <button id="copy-button">Copy</button>
+</div>
+</div>
+
+<p>
+    Lalu, ada permintaan untuk menambahkan metode yang akan menghitung kompensasi lembur tiap employee. Juga penambahan atribut <code class="class">'bonus'</code> dan <code class="class">'Compensation'</code> pada class <code class="class">'Employee</code>.
+</p>
+
+<div class="contain">
+    <div class="code-wrap">
+    <pre>
+        <code id="code" class="language-java">
+            public class Employee {
+                private String name;
+                private String department;
+                private int salary;
+                private int bonus;
+                private int Compensation;
+            }
+            public class Bonus {
+                public void calculate(Employee employee) {
+                    if (employee.getSalary() > 50000) {
+                        employee.setSalary(employee.getSalary() + 1000);
+                    }
+                    employee.setBonus(employee.getBonus() + 1000);
+                    employee.setCompensation(employee.getSalary() + employee.getBonus());
+                }
+            }
+        </code>
+    </pre>
+    <button id="copy-button">Copy</button>
+</div>
+</div>
+<p>
+    penambahan metode di class <code class="class">'Bonus'</code>, dan penambahan atribut di class <code class="class">'Employee'</code>. Hal ini menyebabkan code smells shotgun surgery dimana atribut <code class="class">'salary'</code>, <code class="class">'bonus'</code>, dan <code class="class">'Compensation'</code> tidak semuanya berhubungan dengan metode <code class="class">'calculate()'</code>. Dengan begitu solusi yang di sarankan.
+<div class="contain">
+    <div class="code-wrap">
+    <pre>
+        <code id="code" class="language-java">
+            public class Employee {
+                private String name;
+                private String department;
+                private int salary;
+                private int bonus;
+                private int Compensation;            
+                public Employee(String name, String department, int salary, int bonus, int Compensation) {
+                    this.name = name;
+                    this.department = department;
+                    this.salary = salary;
+                    this.bonus = bonus;
+                    this.Compensation = Compensation;
+                }            
+                public void setDepartment(String department) {
+                    this.department = department;
+                }            
+                public void setSalary(int salary) {
+                    this.salary = salary;
+                }            
+                public void setBonus(int bonus) {
+                    this.bonus = bonus;
+                }
+                public void setCompensation(int Compensation) {
+                    this.Compensation = Compensation;
+                }            
+                public void printDetails() {
+                    System.out.println("Name: " + name);
+                    System.out.println("Department: " + department);
+                    System.out.println("Salary: " + salary);
+                    System.out.println("Bonus: " + bonus);
+                }
+                public int getCompensation() {
+                    return Compensation;
+                }
+                public int getBonus() {
+                    return bonus;
+                }
+                public void calculateBonusnCompensation() {
+                    Bonus bonus = new Bonus();
+                    bonus.calculate(this);
+                }
+            }
+            
+            public class Bonus {
+                public void calculate(Employee employee) {
+                    if (employee.getSalary() > 50000) {
+                        employee.setSalary(employee.getSalary() + 1000);
+                    }
+                    int bonus = employee.getBonus();
+                    employee.setBonus(bonus + 1000);
+                    employee.setCompensation(employee.getSalary() + employee.getBonus());
+                }
+            }
+        </code>
+    </pre>
+    <button id="copy-button">Copy</button>
+</div>
+</div>
+
+<h3 class="prev">Back <a href="Divergent Change.html">Divergent Change</a></h3>
+<h3 class="Next">Next <a href="Parallel Inheritance Hierarchies.html">Parallel Inheritance Hierarchies</a></h3>
+</div>
+
+<footer>
+    <div class="kotak">
+        <a href="Divergent Change.html">Divergent Change</a>
+        <a href="Shotgun Surgery.html">Shotgun Surgery</a>
+        <a href="Parallel Inheritance Hierarchies.html">Parallel Inheritance Hierarchies</a>
+    </div>
+    <br>
+<div class="bar">
+    <p>&copy; 2024</p>
+</div>
+</footer>
+</div>
+</body>
+<script src="main.js"></script>
+<script src="prism.js"></script>
+</html>

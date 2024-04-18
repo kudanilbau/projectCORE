@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ChangePREVENTER.CSS">
+    <title>Change Preventers</title>
+</head>
+<body>
+    <header class="head">
+        <a></a>
+        <nav class="navbar">
+            <a href="ChangePreventers.html">Change Preventers</a>
+            <a href="Code Reengineering.html">Dispensables</a>
+        </nav>
+</header>
+    <br>
+    <div class="container">
+        <div class="text">
+    <h1> Change Preventers </h1>
+    <br>
+    <p>
+        Smell ini terjadi pada code yang perlu diubah, perubahan code bisa saja bukan hanya di satu tempat namun bisa terjadi pada beberapa tempat. Change Preventers digunakan untuk meminimalisir adanya kompleksitas pada code, juga untuk menjaga kestabilan dan keberlanjutan siklus hidup codenya. Dengan menggunakan change preventers kita dapat meningkatkan kulaitas dari code kita, menggurangi resiko terhadap gagalnya code saat dijalankan(error), mempercepat jalannya development, mempermudah untuk memelihara code/software, dan juga dapat meningkatkan kepuasan pelanggan dengan code yang lebih baik.
+    </p>
+    <br>
+    <div>
+        <h3><a href="Divergent Change.html">Divergent Change</a></h3>
+        <br>
+        <p>Divergent Change merupakan salah satu code smells yang muncul dari tidak ada penerapan change preventers atau kegagalan dari penerapannya. Hal ini ditandai dengan perubahan pada metode atau class karena berbagai alasan.
+            beberapa contoh alasan terjadinya divergent change:
+            Kasus pada metode yang seharusnya bertanggung jawab pada satu aspek fungsional malah harus berubah karena adanya tuntutan pada beberapa metode lain. Kasus lain, dimana class digunakan oleh beberapa fitur pada sebuah aplikasi, dan fitur-fitur itu mengalami pengembangan/upgrade sehingga menjadi saling independen dan menyebabkan class tersebut harus di ubah untuk mendukung fitur-fitur tersebut. 
+        </p>
+    </div>
+    <br>
+    <div>
+        <h3><a href="Shotgun Surgery.html">Shotgun Surgery</a></h3>
+        <br>
+        <p>
+            Shotgun Surgery adalah salah satu smells code yang muncul saat ada perubahan kecil pada source code dan menyebabkan serangkaian perubahan pada metode-metode yang tidak terkait. Shotgun sendiri pada masalah ini merupakan analogi dimana peluru yang ditembakan akan menyebabkan lubang dan peluru itu merupakan perubahan pada code. Contoh kasusnya yaitu, saat adanya perubahan kecil pada salah satu metode dan menyebabkan kita harus mengubah banyak class dan metode yang tidak berhubungan dengan metode yang di ubah.
+        </p>
+    </div>
+    <br>
+    <div>
+        <h3><a href="Parallel Inheritance Hierarchies.html">Parallel Inheritance Hierarchies</a></h3>
+        <br>
+        <p>
+            Parallel Inheritance Hierarchies merupakans alah satu code smells yang muncul saat ada dua atau lebih set dari class-class yang saling berkaitan dengan hirarki inheritance, tiap perubahan pada salah satu hirarki menyebabkan kita harus merubah juga hirarki satunya dan dengan perubahan yang sebanding. Contohnya seperti ada class A dan class B yang saling berhubungan dan class A mendapat subclass dan hal ini membuat kita harus membuat subclass juga pada class B.
+        </p>
+    </div>
+</div>
+<footer>
+    <div class="kotak">
+        <a href="Divergent Change.html">Divergent Change</a>
+        <a href="Shotgun Surgery.html">Shotgun Surgery</a>
+        <a href="Parallel Inheritance Hierarchies.html">Parallel Inheritance Hierarchies</a>
+    </div>
+    <br>
+<div class="bar">
+    <p>&copy; 2024</p>
+</div>
+</footer>
+
+</div>
+</body>
+</html>

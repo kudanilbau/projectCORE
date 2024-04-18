@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="prism.css">
+    <link rel="stylesheet" href="Paralel.css">
+    <title>Change Preventers</title>
+</head>
+<body>
+    <header class="head">
+        <a></a>
+        <nav class="navbar">
+            <a href="ChangePreventers.html">Change Preventers</a>
+            <a href="#">Dispensables</a>
+        </nav>
+    </header>
+    <br>
+    <div class="all">
+
+    <div class="container">
+        <h1>Parallel Inheritance Hierarchies</h1>
+        <br>
+        <h3>Penjelasan</h3>
+        <p>
+            Parallel Inheritance Hierarchies terjadi ketika terdapat dua hierarki kelas yang sejajar atau saling terkait dalam sistem. Kedua hierarki ini sering kali mengalami update yang terpisah, sehingga perubahan pada satu hierarki memerlukan perubahan yang sebanding atau serupa pada hierarki lainnya. Hal ini dapat menyebabkan code menjadi sulit dimengerti dan kompleks.
+        </p>
+        <br>
+        <h3>Faktor</h3>
+        <p>
+           Kurangnya pemisahan tanggung jawab dan ketergantungan yang berlebihan antara class.
+        </p>        
+        <br>
+        <img class="kasus" src="img/refactor.png" alt="Case">
+        <p>
+            Ada dua hirarki yang saling berhubungan hirarki <code class="class">'Employee'</code> dan <code class="class">'Department'</code>. Berikut adalah hirarki <code class="class">'Employee'</code>.
+        </p>
+<div class="contain">
+    <div class="code-wrap">
+    <pre>
+        <code id="code" class="language-java">
+public class Employee {
+    private String name;
+    private double salary;
+    private String departmentName;
+
+    // Constructor, getters, setters
+}
+
+public class Engineer extends Employee {
+    private String role;
+
+    // Constructor, getters, setters
+}
+
+public class Manager extends Employee {
+    private int teamSize;
+
+    // Constructor, getters, setters
+}
+        </code>
+    </pre>
+    <button id="copy-button">Copy</button>
+</div>
+</div>
+
+<p>
+    lalu hirarki <code class="class">'Department'</code>.
+</p>
+
+<div class="contain">
+    <div class="code-wrap">
+    <pre>
+        <code id="code" class="language-java">
+public class Department {
+    private String name;
+    private String location;
+
+    // Constructor, getters, setters
+}
+
+public class EngineeringDepartment extends Department {
+    private List<Engineer> engineers;
+
+    // Constructor, getters, setters
+}
+
+public class ManagementDepartment extends Department {
+    private List<Manager> managers;
+
+    // Constructor, getters, setters
+}
+        </code>
+    </pre>
+    <button id="copy-button">Copy</button>
+</div>
+</div>
+
+<p>
+    Lalu terjadi penambahan id yang menyebabkan perubahan.
+</p>
+
+<div class="contain">
+    <div class="code-wrap">
+    <pre>
+        <code id="code" class="language-java">
+public class Employee {
+    private int employeeId;
+    private String name;
+    private double salary;
+    private String departmentName;
+
+    // Constructor, getters, setters
+}
+
+public class Engineer extends Employee {
+    private String role;
+
+    // Constructor, getters, setters
+}
+
+public class Manager extends Employee {
+    private int teamSize;
+
+    // Constructor, getters, setters
+}
+
+public class Department {
+    private int departmentId;
+    private String name;
+    private String location;
+
+    // Constructor, getters, setters
+}
+
+public class EngineeringDepartment extends Department {
+    private List<Engineer> engineers;
+
+    // Constructor, getters, setters
+}
+
+public class ManagementDepartment extends Department {
+    private List<Manager> managers;
+
+    // Constructor, getters, setters
+}
+        </code>
+    </pre>
+    <button id="copy-button">Copy</button>
+</div>
+</div>
+
+<h3 class="Prev">Back <a href="Shotgun Surgery.html">Shotgun Surgery</a></h3>
+</div>
+
+<footer>
+    <div class="kotak">
+        <a href="Divergent Change.html">Divergent Change</a>
+        <a href="Shotgun Surgery.html">Shotgun Surgery</a>
+        <a href="Parallel Inheritance Hierarchies.html">Parallel Inheritance Hierarchies</a>
+    </div>
+    <br>
+<div class="bar">
+    <p>&copy; 2024</p>
+</div>
+</footer>
+</div>
+</body>
+<script src="main.js"></script>
+<script src="prism.js"></script>
+</html>
